@@ -1,0 +1,17 @@
+// Form
+block content
+    h1(style="text-align: center; color: #333; font-size: 24px; font-family: Courier, monospace;") Submit Form
+    form(action="/students/submit", method="post", style="display: flex; flex-direction: column; align-items: center;")
+      label(for="name", style="margin-bottom: 10px;") Full name:
+      input(type="text", id="name", name="Name", required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;")
+      br
+      label(for="email", style="margin-bottom: 10px;") Email:
+      input(type="email", id="email", name="Email", required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;")
+      br
+      label(for="age", style="margin-bottom: 10px;") Age:
+      input(type="number", id="age", name="Age", required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;")
+      br
+      label(for="gpa", style="margin-bottom: 10px;") GPA:
+      input(type="number", id="gpa", name="GPA", step="0.1", required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;")
+      br
+      button(type="submit", style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer;") Submit

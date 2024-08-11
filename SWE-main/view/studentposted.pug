@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1(style="text-align: center; color: #333; font-size: 24px;font-family: Courier, monospace;") Posted jobs List
+
+  ul(style="list-style-type: none; padding: 0; margin: 0;")
+    each job in jobs 
+      li(style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 4px;")
+        | Job Name: #{job.jobName} <br>
+        | Job Type: #{job.JobType} <br>
+        | GPA: #{job.GPA} <br>
+        | Date: #{job.Date} <br>
+        a(href="/employers/applied" style="text-decoration: none;")
+          button(type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;") Applicants list
+      hr(style="border-top: 1px solid #ccc; margin-top: 20px; margin-bottom: 20px;")

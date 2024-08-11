@@ -1,0 +1,43 @@
+block content
+
+  style.
+    body {
+      background-image: url('/image/cover.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Courier, monospace;
+      image-rendering: crisp-edges; 
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .signup-card {
+      background-color: rgba(255, 255, 255, 0.8); 
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+  div.signup-card
+    h1(style="text-align: center; color: #333; font-size: 24px;") Log In As An Employer
+
+    form(action='/employer-auth/employerLogIn', method='POST', style="display: flex; flex-direction: column; align-items: center;")
+
+      div(style="display: flex; flex-direction: column; margin-bottom: 10px;")
+        label(for='email', style="margin-bottom: 5px;") Email:
+        input(type='email', id='email', name='email', required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;")
+
+      div(style="display: flex; flex-direction: column; margin-bottom: 10px;")
+        label(for='password', style="margin-bottom: 5px;") Password:
+        input(type='password', id='password', name='password', required, style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;")
+
+      button(type='submit', style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;") LogIn
+
+    p(style="text-align: center; margin-top: 10px;")
+      | Already have an account? 
+      a(href='/employer-auth/employerSignUp', style="color: #5F9EA0; text-decoration: none;") Sign Up

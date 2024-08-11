@@ -1,0 +1,129 @@
+extends layout
+
+block content
+
+  p(style="color: #555; font-size: 18px; text-align: center; font-family: cursive; margin-bottom: 20px;") 
+      | Welcome to Talent Outsourcing, your gateway to endless opportunities. Whether you're seeking your dream job or looking to hire top talent, we've got you covered. Explore our platform to discover a world of possibilities.
+  
+  style.
+    .job-categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 16px; 
+    }
+
+    .category {
+      text-align: center;
+    }
+
+    .category img {
+      width: 100%; 
+      height: auto;
+    }
+
+    .category-button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #e4e6ea;
+      color: black;
+    }
+
+  div.job-categories
+    div.category
+      img(src="/image/engineering.jpg" alt="Engineering")
+      button.category-button Engineering
+    div.category
+      img(src="/image/technology.jpg" alt="Technology")
+      button.category-button Technology
+    div.category
+      img(src="/image/healthcare.jpg" alt="Healthcare")
+      button.category-button Healthcare
+    div.category
+      img(src="/image/education.jpg" alt="Education")
+      button.category-button Education
+    div.category
+      img(src="/image/finance.jpg" alt="Finance")
+      button.category-button Finance
+    div.category
+      img(src="/image/architecture.jpg" alt="Architecture")
+      button.category-button Architecture
+
+  div(style="text-align: center;")
+    // Search bar with button
+    div(style="margin-bottom: 10px;")
+      input(type="text", id="searchBar", placeholder="Search for Students or Employers...", style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: Courier, monospace; width: 300px; margin-right: 10px;")
+      button(type="button", onclick="searchUsers()", style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-family: Courier, monospace;") Search
+
+    // Container to display the search results
+    div(id="userList")
+
+    // Dropdown list
+    select(name="engineeringField", id="engineeringField", style="margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: Courier, monospace; background-color: #f8f8f8; color: #333;", onchange="searchJobs()")
+      option(value="") Select an Engineering Field
+      option(value="Biomedical Engineering") Biomedical Engineering
+      option(value="Civil and Environmental Engineering") Civil and Environmental Engineering
+      option(value="Chemical Engineering") Chemical Engineering
+      option(value="Electrical Engineering") Electrical Engineering
+      option(value="Mechanical Engineering") Mechanical Engineering
+      option(value="Software Engineering") Software Engineering
+
+    // Container to display the search results for jobs
+    div(id="jobList")
+
+    // Button
+    a(href="/students")
+      button(type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-family: Courier, monospace;") Recommendations
+
+  // JavaScript code to handle the search functionality
+  script.
+    function searchUsers() {
+      const searchQuery = document.getElementById('searchBar').value;
+      fetch('/search/searchUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: searchQuery }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = ''; // Clear previous search results
+        data.students.forEach(student => {
+          const studentItem = document.createElement('div');
+          studentItem.textContent = `Student Name: ${student.name}, Email: ${student.email}`;
+          userList.appendChild(studentItem);
+        });
+        data.employers.forEach(employer => {
+          const employerItem = document.createElement('div');
+          employerItem.textContent = `Employer Name: ${employer.name}, Email: ${employer.email}`;
+          userList.appendChild(employerItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    function searchJobs() {
+      const department = document.getElementById('engineeringField').value;
+      fetch('/search/searchJob', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ department }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        const jobList = document.getElementById('jobList');
+        jobList.innerHTML = ''; // Clear previous search results
+        data.forEach(job => {
+          const jobItem = document.createElement('div');
+          jobItem.textContent = `Job Name: ${job.jobName}, Job Type: ${job.jobType}`;
+          jobList.appendChild(jobItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+    }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head> 
+<body>
+    <h1 style="text-align: center; color: #333; font-size: 24px;">Post Job</h1>
+    <form action="/employers/submit" method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <label for="name" style="margin-bottom: 10px;">Job name: </label>
+        <input type="text" id="name" name="jobName" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;">
+        <br>
+        <label for="type" style="margin-bottom: 10px;">Job Type: </label>
+        <input type="text" id="type" name="jobType" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;">
+        <br>
+        <label for="gpa" style="margin-bottom: 10px;">GPA: </label>
+        <input type="number" id="gpa" name="gpa" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;">
+        <br>
+        <label for="date" style="margin-bottom: 10px;">Date: </label>
+        <input type="date" id="date" name="date" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;">
+        <br>
+        <!-- Add department input -->
+        <label for="department" style="margin-bottom: 10px;">Department: </label>
+        <input type="text" id="department" name="department" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px;">
+        <br>
+        <button type="submit" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">Submit</button>
+    </form>
+</body>
+</html>

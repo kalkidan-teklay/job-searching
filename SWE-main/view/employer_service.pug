@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h2(style="text-align: center; color: #333; font-size: 24px;font-family: Courier, monospace;") Employer service page
+
+  div(style="display: flex; justify-content: center; margin-top: 20px;")
+    a(href="/employers/post" style="text-decoration: none; margin-right: 10px;")
+      button(type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer;") post job
+
+    a(href="/employers/posted" style="text-decoration: none;")
+      button(type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer;") posted job

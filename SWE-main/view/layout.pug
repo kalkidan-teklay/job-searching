@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title My Express App
+    meta(charset="utf-8")
+    link(rel="stylesheet", href="/style.css")
+  body
+    header
+      h2 Talent outsourcing
+      nav
+        ul
+          li
+            a(href="/")
+              button(type="button" class="rounded-button") Home
+          li
+            a(href="/ultimatumSignUp")
+              button(type="button" class="rounded-button") Sign Up
+          li
+            a(href="/ultimatumLogIn")
+              button(type="button" class="rounded-button") Log In
+          li
+            a(href="/employer-auth/employerLogout")
+              button(type="button" class="rounded-button") Log Out
+          li
+            a(href="/employers")
+              button(type="button" class="rounded-button") Employer service
+          li
+            button(class="icon-button" id="openIndexButton")
+              img(src="/image/telegram-icon.png" alt="Logo")
+          li
+            a(href="/profile")
+              button(type="button" class="icon-button")
+                img(src="/image/contact.png" alt="Logo")
+    script.
+      document.getElementById('openIndexButton').addEventListener('click', () => {
+        // Redirect the user to the index route of the messaging project
+        window.location.href = 'http://localhost:3000/';
+      });
+
+   
+
+    block content

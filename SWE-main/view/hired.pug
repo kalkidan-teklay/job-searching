@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Hired Candidates 
+    body
+        h1 List of Hired Candidates
+        ul
+        each hiredCandidate in hired
+            li Full Name - #{hiredCandidate.FullName}
+            // Add other relevant information
+            hr
+
+    script. 
+        function hireCandidate(fullName, email) {
+
+            fetch('/store-hired-candidate', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fullName }),
+            })
+            .then(response => response.text())
+            .then(message => {
+            alert(message);
+            })
+            .catch(error => console.error(error));
+        }

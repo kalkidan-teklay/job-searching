@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  div(style="text-align: center;")
+    h1 Profile Page
+    // Display user's profile information
+    if userProfile
+      p Welcome, #{userProfile.user.name}!
+      // Display other profile fields like profile picture, bio, etc.
+    else
+      p Profile not found
