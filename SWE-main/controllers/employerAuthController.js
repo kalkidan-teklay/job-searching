@@ -1,5 +1,7 @@
 const employer = require('../models/employerModel')
 const jwt = require('jsonwebtoken')
+const { createProfileForUser } = require('../controllers/profileControll');
+
 
 //error handler
 const handleErrors = (err)=>{
@@ -28,6 +30,7 @@ exports.SignUp = async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const Employer = await employer.create({ name, email, password });
+        await createProfileForUser(Employer._id, 'Employer');
         const token = createToken(Employer._id, Employer.role); // Include employer's role
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.redirect('/employers');

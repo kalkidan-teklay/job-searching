@@ -7,6 +7,7 @@ const employerRouter = require('./routes/employers')
 const studentRouter = require('./routes/students')
 const messageRouter = require('./routes/message')
 const profileRouter = require('./routes/profile')
+//const profileRouter = require('./routes/profileRouter');
 const employerAuthRouter = require('./routes/employerAuthRoute')
 const studentAuthRouter = require('./routes/studentAuthRoute')
 const { requireEmpAuth, requireEmployerRole } = require('./middleware/employerAuthMiddleware')
@@ -28,7 +29,10 @@ app.use("/students", requireStudAuth, requireStudentRole, studentRouter);
 app.use("/employer-auth", employerAuthRouter)
 app.use("/student-auth", studentAuthRouter)
 app.use("/message", messageRouter);
-app.use("/profile", requireStudAuth, requireStudentRole, profileRouter);
+//app.use("/profile", profileRouter);
+//app.use("/profile", profileRouter)
+app.use("/student/profile", requireStudAuth, requireStudentRole, profileRouter);
+app.use("/employer/profile", requireEmpAuth, requireEmployerRole, profileRouter);
 app.use("/search",searchJob);
 
 // View engine setup - for displaying the dynamic front end content

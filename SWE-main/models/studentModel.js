@@ -7,7 +7,7 @@ const StudentSchema = new Schema({
     name: { 
         type: String, 
         required: [true, 'please enter your name'], 
-        maxLength: 10 
+        
     },
     email: {
         type: String, 
@@ -33,6 +33,10 @@ StudentSchema.pre('save', async function(next){
     this.password = await bcrypt.hash(this.password, salt)
     next()
 })
+
+
+// Call this function after creating a new user
+
 
 //static method to login employer
 StudentSchema.statics.login = async function (email, password){

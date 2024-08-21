@@ -1,11 +1,21 @@
-// profileModel.js
 const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference to your user model
+        required: true,
+        refPath: 'userType'
     },
+    userType: {
+        type: String,
+        required: true,
+        enum: ['Student', 'Employer'] 
+    },
+    bio: {
+        type: String,
+        default: ''
+    },
+    // Add any other profile-specific fields here
 });
 
 const Profile = mongoose.model('Profile', ProfileSchema);

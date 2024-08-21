@@ -2,6 +2,7 @@
 
 const student = require('../models/studentModel');
 const jwt = require('jsonwebtoken');
+const { createProfileForUser } = require('../controllers/profileControll');
 
 const handleErrors = (err) => {
     console.log(err.message, err.code);
@@ -25,7 +26,8 @@ exports.SignUp = async (req, res) => {
     const { name, email, password } = req.body;
     try {
         const Student = await student.create({ name, email, password });
-        const token = createToken(Student._id, Student.role);
+        await createProfileForUser(Student._id, 'Student');
+        const token = createToken(Student._id, 'student');
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.redirect('/students');
     } catch (err) {
@@ -42,7 +44,7 @@ exports.logIn = async (req, res) => {
     const { email, password } = req.body;
     try {
         const Student = await student.login(email, password);
-        const token = createToken(Student._id, Student.role);
+        const token = createToken(Student._id, 'student');
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.redirect('/students');
     } catch (err) {

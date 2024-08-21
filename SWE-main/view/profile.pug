@@ -3,9 +3,15 @@ extends layout
 block content
   div(style="text-align: center;")
     h1 Profile Page
-    // Display user's profile information
-    if userProfile
-      p Welcome, #{userProfile.user.name}!
-      // Display other profile fields like profile picture, bio, etc.
+    if role === 'student'
+      a(href='/student/profile') View Student Profile
+    else if role === 'employer'
+      a(href='/employer/profile') View Employer Profile
+
+    if profile
+      p Welcome, #{profile.user.name}!
+      p Email: #{profile.user.email}
+      p Bio: #{profile.bio || 'No bio available'}
+      // Add other profile fields here (e.g., profile picture, etc.)
     else
       p Profile not found

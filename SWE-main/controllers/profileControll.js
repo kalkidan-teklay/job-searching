@@ -1,54 +1,66 @@
-const asyncHandler = require("express-async-handler");
-const User = require('../models/studentModel');
+const asyncHandler = require('express-async-handler');
+const Student = require('../models/studentModel');
+const Employer = require('../models/employerModel');
 const Profile = require('../models/profileModel');
 
 
-//profile page
-const renderProfilePage = async (req, res) => {
-    try {
-        const userId = req.user.id;
-        console.log(userId)
-        const user = await User.findOne({ _id: userId });
-        if (!user) {
-            return res.status(404).send('User not found');
-        }
-        // Now you can render the profile page using the found user
-        res.render('profile', { title: 'Profile', user });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
+
+const renderHomePage = (req, res) => {
+    const role = req.user ? req.user.role : null; // Get the role from the JWT token
+    res.render('home', { role }); // Pass the role to the Pug template
 };
 
-// editing profile
+// Render profile page
+const renderProfilePage = asyncHandler(async (req, res) => {
+    const userId = req.user.id;
+    const userType = req.user.role === 'student' ? 'Student' : 'Employer'; // Assuming req.user has a `role` field
+    
+    console.log('User ID:', userId);
+    const profile = await Profile.findOne({ user: userId }).populate('user');
+    console.log('Profile:', profile);
 
-async function updateUserById(userId,updateValues){
-    try {
-        const result = User.updateOne({_id:userId}, {$set: updateValues });
-        if ( result === 0){
-            throw new Error('User nor found or values not modfified');
-        }
-        return result;
+    if (!profile) {
+        return res.status(404).send('Profile not found');
     }
-    catch(error){
-        throw new Error('Error Updating user');
+
+    res.render('profile', { title: 'Profile', profile, role: req.user.role  });
+    console.log('role: ', req.user.role)
+});
+
+// Create profile after user registration
+const createProfileForUser = asyncHandler(async (userId, userType) => {
+    const profile = new Profile({ user: userId, userType });
+    await profile.save();
+});
+
+// Update profile
+const updateProfile = asyncHandler(async (req, res) => {
+    const userId = req.user.id;
+    const updateValues = req.body;
+
+    const profile = await Profile.findOneAndUpdate(
+        { user: userId },
+        { $set: updateValues },
+        { new: true, runValidators: true }
+    );
+
+    if (!profile) {
+        return res.status(404).send('Profile not found');
     }
-}
 
+    res.status(200).json(profile);
+});
 
-async function deleteUserById(userId){
-    try {
-        const deletedUser = await User.findByIdAndDelete(userId);
+// Delete profile
+const deleteProfile = asyncHandler(async (req, res) => {
+    const userId = req.user.id;
+    const profile = await Profile.findOneAndDelete({ user: userId });
 
-        if (!deletedUser) {
-            throw new Error('User not found');
-        }
-
-        // console.log(`User with ID ${userId} has been deleted successfully.`);
-        return deletedUser;
+    if (!profile) {
+        return res.status(404).send('Profile not found');
     }
-    catch(error){
-        throw new Error('Error deleting user');
-    }
-}
-module.exports = { renderProfilePage, updateUserById, deleteUserById };
+
+    res.status(200).send('Profile deleted successfully');
+});
+
+module.exports = { renderProfilePage, createProfileForUser, updateProfile, deleteProfile, renderHomePage };
