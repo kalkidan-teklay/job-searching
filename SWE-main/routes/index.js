@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+const checkUser = require('../middleware/userAuthMiddleware');
+
+router.get('/', checkUser, (req, res) => {
     res.render("index");
 });
 

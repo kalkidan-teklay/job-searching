@@ -4,12 +4,6 @@ const Employer = require('../models/employerModel');
 const Profile = require('../models/profileModel');
 
 
-
-const renderHomePage = (req, res) => {
-    const role = req.user ? req.user.role : null; // Get the role from the JWT token
-    res.render('home', { role }); // Pass the role to the Pug template
-};
-
 // Render profile page
 const renderProfilePage = asyncHandler(async (req, res) => {
     const userId = req.user.id;
@@ -63,4 +57,4 @@ const deleteProfile = asyncHandler(async (req, res) => {
     res.status(200).send('Profile deleted successfully');
 });
 
-module.exports = { renderProfilePage, createProfileForUser, updateProfile, deleteProfile, renderHomePage };
+module.exports = { renderProfilePage, createProfileForUser, updateProfile, deleteProfile};

@@ -14,6 +14,7 @@ const { requireEmpAuth, requireEmployerRole } = require('./middleware/employerAu
 const { requireStudAuth, requireStudentRole } = require('./middleware/studentAuthMiddleware')
 const cookieParser = require('cookie-parser')
 const searchJob = require('./routes/search');
+const checkUser = require('./middleware/userAuthMiddleware');
 
 const port = 5000;
 
@@ -21,6 +22,7 @@ const port = 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(checkUser); 
 
 //ROUTES
 app.use("/", indexRouter);

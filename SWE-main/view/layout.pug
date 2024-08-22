@@ -1,3 +1,4 @@
+// views/layout.pug
 doctype html
 html
   head
@@ -28,26 +29,27 @@ html
             button(class="icon-button" id="openIndexButton")
               img(src="/image/telegram-icon.png" alt="Logo")
           li
-            p Role: #{role}
+            
             if role
               if role === 'student'
                 a(href='/student/profile')
-                  img(src="/image/contact.png" alt="Profile Icon")
-                  | Profile
+                  button(class="icon-button")
+                    img(src="/image/contact.png" alt="Profile Icon")
+                  
               else if role === 'employer'
                 a(href='/employer/profile')
-                  img(src="/image/contact.png" alt="Profile Icon")
-                  | Profile
+                  button(class="icon-button")
+                    img(src="/image/contact.png" alt="Profile Icon")
+                  
             else 
               a(href ='/ultimatumLogIn')
-                img(src="/image/contact.png" alt="Profile Icon")
+                button(class="icon-button")
+                  img(src="/image/contact.png" alt="Profile Icon")
 
     script.
       document.getElementById('openIndexButton').addEventListener('click', () => {
         // Redirect the user to the index route of the messaging project
         window.location.href = 'http://localhost:3000/';
       });
-
-   
 
     block content
