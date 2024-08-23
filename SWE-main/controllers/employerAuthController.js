@@ -1,6 +1,7 @@
 const employer = require('../models/employerModel')
 const jwt = require('jsonwebtoken')
 const { createProfileForUser } = require('../controllers/profileControll');
+const admin = require('../firebase'); 
 
 
 //error handler
@@ -29,11 +30,28 @@ exports.signUpForm = (req, res) => {
 exports.SignUp = async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        const Employer = await employer.create({ name, email, password });
+        // Create Employer in Firebase
+        const firebaseUser = await admin.auth().createUser({
+            email: email,
+            password: password,
+            displayName: name,
+        });
+        
+        const Employer = await employer.create({ name, email, password,  firebaseUID: firebaseUser.uid, });
+
+        
+
+        // Store Firebase UID in MongoDB (if needed)
+        Employer.firebaseUID = firebaseUser.uid;
+        await Employer.save();
+
         await createProfileForUser(Employer._id, 'Employer');
         const token = createToken(Employer._id, Employer.role); // Include employer's role
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.redirect('/employers');
+
+        
+
     } catch (err) {
         handleErrors(err);
         res.status(400).send('Error, user not created');
@@ -51,6 +69,11 @@ exports.logIn = async (req, res) => {
     const { email, password } = req.body;
     try {
         const Employer = await employer.login(email, password);
+
+        // Authenticate with Firebase and generate custom token
+        const firebaseUser = await admin.auth().getUserByEmail(email);
+        const customToken = await admin.auth().createCustomToken(firebaseUser.uid);
+
         const token = createToken(Employer._id, Employer.role); // Include employer's role
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.redirect('/employers');

@@ -3,6 +3,8 @@
 const student = require('../models/studentModel');
 const jwt = require('jsonwebtoken');
 const { createProfileForUser } = require('../controllers/profileControll');
+const admin = require('../firebase'); 
+
 
 const handleErrors = (err) => {
     console.log(err.message, err.code);
@@ -25,7 +27,13 @@ exports.signUpForm = (req, res) => {
 exports.SignUp = async (req, res) => {
     const { name, email, password } = req.body;
     try {
-        const Student = await student.create({ name, email, password });
+        const firebaseUser = await admin.auth().createUser({
+            email: email,
+            password: password,
+            displayName: name,
+        });
+
+        const Student = await student.create({ name, email, password, firebaseUID: firebaseUser.uid,  });
         await createProfileForUser(Student._id, 'Student');
         const token = createToken(Student._id, 'student');
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });

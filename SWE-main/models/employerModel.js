@@ -4,6 +4,7 @@ const { isEmail } = require('validator');
 const bcrypt =  require('bcrypt')
 
 
+
 const EmployerSchema = new Schema({
     name: { 
         type: String, 
@@ -25,6 +26,11 @@ const EmployerSchema = new Schema({
     role: {
         type: String,
         default: 'employer' 
+    },
+
+    firebaseUID: {
+        type: String, // Store Firebase UID
+        required: true,
     }
 })
 
