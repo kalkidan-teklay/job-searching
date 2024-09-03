@@ -5,5 +5,6 @@ const serviceAccount = require('./chatapp-4f052-firebase-adminsdk-k1vl5-faf353b8
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+const db = admin.firestore();
 
-module.exports = admin;
+module.exports = { admin, db };

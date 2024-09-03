@@ -15,6 +15,8 @@ const { requireStudAuth, requireStudentRole } = require('./middleware/studentAut
 const cookieParser = require('cookie-parser')
 const searchJob = require('./routes/search');
 const checkUser = require('./middleware/userAuthMiddleware');
+app.use('/', require('./routes/chat'));
+
 
 const port = 5000;
 
@@ -36,6 +38,17 @@ app.use("/message", messageRouter);
 app.use("/student/profile", requireStudAuth, requireStudentRole, profileRouter);
 app.use("/employer/profile", requireEmpAuth, requireEmployerRole, profileRouter);
 app.use("/search",searchJob);
+app.use('/chat', express.static(path.join(__dirname, 'chat/dist')));
+app.use('/assets', express.static(path.join(__dirname, 'chat/dist/assets')));
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:5000', // Your client’s origin
+  credentials: true // Allow cookies to be sent with requests
+}));
+
+app.get('/chat/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'chat/dist', 'index.html'));
+});
 
 // View engine setup - for displaying the dynamic front end content
 app.set("views", path.join(__dirname, "view"));

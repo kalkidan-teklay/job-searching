@@ -35,17 +35,22 @@ const EmployerSchema = new Schema({
 })
 
 //this hashes the password just before employer is created
-EmployerSchema.pre('save', async function(next){
-    const salt = await bcrypt.genSalt()
-    this.password = await bcrypt.hash(this.password, salt)
-    next()
-})
+EmployerSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
+
 
 //static method to login employer
 EmployerSchema.statics.login = async function (email, password){
+
     const employer = await this.findOne({email})
     if (employer){
+        console.log('Stored hashed password:', employer.password);
         const auth = await bcrypt.compare(password, employer.password) 
+        console.log('Password match:', auth);
         if(auth){
             return employer
         }throw Error('incorrect password')
