@@ -10,3 +10,8 @@ This is a job searching website that aims to cross the bridge between employers 
  - Authentication and Authorization.
  - Users can view the list of jobs and apply for them.
  - Employers can post jobs and view the list of applicants.
+## Screenshots
+
+### Home Page
+![Home Page](./Screenshot(7).png)
+![Home page](./Screenshot(8).png)
