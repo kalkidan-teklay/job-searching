@@ -13,5 +13,5 @@ This is a job searching website that aims to cross the bridge between employers 
 ## Screenshots
 
 ### Home Page
-![Home Page](./Screenshot(7).png)
-![Home page](./Screenshot(8).png)
+![Home Page](./homepage.png)
+![Home page](./homepage1.png)
