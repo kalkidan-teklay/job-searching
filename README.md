@@ -9,7 +9,9 @@ This is a job searching website that aims to cross the bridge between employers 
 ## Key Features
  - Authentication and Authorization.
  - Users can view the list of jobs and apply for them.
+ - Users can search for jobs.
  - Employers can post jobs and view the list of applicants.
+ - It has a chat feature so that users can communicate with eachother.
 ## Screenshots
 
 ### Home Page
