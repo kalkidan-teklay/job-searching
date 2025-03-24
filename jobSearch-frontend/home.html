@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="image-container " style="position: relative; text-align: center; ">
+        <img src="./public/image/work.jfif" alt="Jobs Image" style="width: 100%; height: 450px; opacity: 0.8; margin-bottom: 18px;"> 
+        <div style="position: absolute; top: 20px; left: 70%; transform: translateX(-50%);">
+            <button style="background-color:transparent; border-radius: 20px; padding: 10px 15px; margin: 0 5px; cursor: pointer; font-size: 16px;">
+                Home
+            </button>
+            <button style="background-color: transparent; border-radius: 20px; padding: 10px 15px; margin: 0 5px; cursor: pointer; font-size: 16px;">
+                <a href="./postJobs.html" style = "text-decoration: none; color: black;"> Post A Job</a>
+            </button>
+            <button style="background-color: transparent; border-radius: 20px; padding: 10px 15px; margin: 0 5px; cursor: pointer; font-size: 16px;">
+                Contact
+            </button>
+        </div>
+
+        
+    </div>
+   
+    <div class="search-bar" style="position: absolute; top: 78%; left: 50%; transform: translate(-50%, -50%); width: 50%;">
+        <div style="display:flex; flex-direction: row">
+            <input type="text" placeholder="Search for jobs..." style="width: 100%; padding: 10px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc;">
+            <button style="position: absolute; right: 0; top: 0; bottom: 0; padding: 0 15px; background-color: #5F9EA0; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Search</button>
+        </div>
+    </div>
+    <h1 style="text-align: center; color: #333; font-size: 42px; font-family: Courier, monospace;"> Jobs List</h1>
+    <div class="container" style="display: flex;">
+        <div class= "sidebar" style="width: 250px; background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-right: 20px;">
+            <form action="">
+                <h3 style="color: #5F9EA0;">filter jobs by category</h3>
+                <label for="category"></label>
+                <select name="category" id="" style="width: 100%; padding: 5px; margin-bottom: 10px;">
+                <option value=""> Select A Category</option>
+                <option value=""> Accounting</option>
+                <option value="">IT </option>
+                <option value="">Marketing </option>
+                <option value="">Finance</option>
+            </select>
+                
+
+
+
+                <h3 style="color: #5F9EA0;">filter jobs by location</h3>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">
+                        <a href="" style="text-decoration: none; display: flex; align-items: center;color: grey">
+                            <i class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px; ">
+                                <span style="font-family:'Times New Roman', Times, serif;">Addis Ababa</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="" style="text-decoration: none; display: flex; align-items: center;color: grey">
+                            <i class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px; ">
+                                <span style="font-family:'Times New Roman', Times, serif;">Bahirdar</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="" style="text-decoration: none; display: flex; align-items: center;color: grey">
+                            <i class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px; ">
+                                <span style="font-family:'Times New Roman', Times, serif;">Hawassa</span>
+                            </i>
+                        </a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="" style="text-decoration: none; display: flex; align-items: center;color: grey">
+                            <i class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px;  ">
+                                <span style="font-family:'Times New Roman', Times, serif;">Mekelle</span>
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+                <button type="submit" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer;"> Apply Filters</button>
+                
+        
+               
+               
+                  
+            </form>
+        </div>
+        <div class="job-list" style="flex-grow: 1;">
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                <li style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+                    <p style="font-size: 20px; color: #333; font-weight: bold; margin: 10px 0;">Software Engineer <br></p>
+                    <p> Company Name: Microsoft <br></p>
+                    <p>Estimated Salary: $180,000<br></p>
+                    <p>  Location: USA <br></p>
+                    <p>Required Skills: React, HTML, css <br></p>
+                    <p> Deadline: 02-08-2025 <br></p>
+                    <p> We are looking for a skilled frontend developer....</p>
+                   
+                    
+                  
+                    
+                   
+                   
+                
+                <a href="./apply.html"> <button style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">Apply</button></a>
+                </li>
+            </ul>
+
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                <li style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+                    <p style="font-size: 20px; color: #333; font-weight: bold; margin: 10px 0;">Devops Engineer <br></p>
+                    <p> Company Name: Google <br></p>
+                    <p>Estimated Salary: $180,000<br></p>
+                    <p>  Location: USA <br></p>
+                    <p>Required Skills: AWS, CI/CD <br></p>
+                    <p> Deadline: 02-08-2025 <br></p>
+                    <p> We are looking for a skilled Devops Engineer....</p>
+                   
+                    
+                  
+                    
+                   
+                   
+                
+                <a href="./apply.html"> <button style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">Apply</button></a>
+                </li>
+            </ul>
+        </div>
+        
+
+    </div>
+    
+</body>
+</html>
+
+
+<!-- extends layout
+
+block content
+  .image-container(style="position: relative; text-align: center;")
+    img(src="/image/work.jfif" alt="Jobs Image" style="width: 100%; height: 450px; opacity: 0.8; margin-bottom: 18px;")
+  .search-bar(style="position: absolute; top: 78%; left: 50%; transform: translate(-50%, -50%); width: 50%;")
+      div(id = "Field" style="display:flex; flex-direction: row")
+        input(type="text"  id="JobTitle" name="search" placeholder="Search for jobs..." style="width: 100%; padding: 10px; font-size: 16px; border-radius: 4px; border: 1px solid #ccc;")
+        button(type="button" onclick="searchJobs()" style="position: absolute; right: 0; top: 0; bottom: 0; padding: 0 15px; background-color: #5F9EA0; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;") Search
+
+
+  //- h1(style="text-align: center; color: #333; font-size: 42px; font-family: Courier, monospace;") Jobs List
+
+  
+  .container(style="display: flex;")
+
+
+    
+    .sidebar(style="width: 250px; background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-right: 20px;")
+      
+      form(method="GET", action="/jobs/filter")  
+        h3(style="color: #5F9EA0;") filter jobs by category
+        select(name="category" style="width: 100%; padding: 5px; margin-bottom: 10px;")
+          option(value="") Select Category 
+          option(value="IT") IT
+          option(value="Marketing") Marketing
+          option(value="Finance") Finance
+
+        h3(style="color: #5F9EA0;") filter job by location
+        ul(style="list-style-type: none; padding: 0;")
+          li(style="margin-bottom: 10px;")
+            a(href="/jobs/filter?location=Addis+Ababa" style="text-decoration: none; display: flex; align-items: center;color: grey")
+              i(class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px; ") 
+              span Addis Ababa
+          li(style="margin-bottom: 10px;")
+            a(href="/jobs/filter?location=Bahirdar" style="text-decoration: none; display: flex; align-items: center; color: grey")
+              i(class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px;")  
+              span Bahirdar
+          li(style="margin-bottom: 10px;")
+            a(href="/jobs/filter?location=Hawassa" style="text-decoration: none; display: flex; align-items: center; color: grey")
+              i(class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px;") 
+              span Hawassa
+          li(style="margin-bottom: 10px;")
+            a(href="/jobs/filter?location=Mekelle" style="text-decoration: none; display: flex; align-items: center;color: grey")
+              i(class="fas fa-map-marker-alt" style="color: #5F9EA0; margin-right: 8px;") 
+              span Mekelle
+        
+
+        button(type="submit" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer;") Apply Filters
+
+    
+    .job-list(style="flex-grow: 1;")
+      ul(style="list-style-type: none; padding: 0; margin: 0;")
+        each job in jobs 
+          li(style="background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 4px;") 
+            p(style="font-size: 20px; color: #333; font-weight: bold; margin: 10px 0;") #{job.JobTitle} <br>
+            | Company Name: #{job.CompanyName} <br>
+            | Estimated Salary: #{job.EstimatedSalary} <br>
+            | Location: #{job.Location} <br>
+            | Required Skills: #{job.RequiredSkillSet} <br>
+            | Deadline: #{job.Deadline.toISOString().split('T')[0]} <br>
+            | Date: #{job.Date.toISOString().split('T')[0]} <br>
+            | #{job.Description} <br>
+            a(href=`/students/${job._id}/apply` style="text-decoration: none;")
+              button(type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: 1px solid #ccc; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;") Apply 
+          hr(style="border-top: 1px solid #ccc; margin-top: 20px; margin-bottom: 20px;")
+
+  script.
+    function searchUsers() {
+      const searchQuery = document.getElementById('searchBar').value;
+      fetch('/search/searchUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: searchQuery }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        const userList = document.getElementById('userList');
+        userList.innerHTML = ''; // Clear previous search results
+        data.students.forEach(student => {
+          const studentItem = document.createElement('div');
+          studentItem.textContent = `Student Name: ${student.name}, Email: ${student.email}`;
+          userList.appendChild(studentItem);
+        });
+        data.employers.forEach(employer => {
+          const employerItem = document.createElement('div');
+          employerItem.textContent = `Employer Name: ${employer.name}, Email: ${employer.email}`;
+          userList.appendChild(employerItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+    }
+
+    function searchJobs() {
+      const jobTitle = document.getElementById('JobTitle').value.trim(); 
+
+      if (!jobTitle) {
+        alert('Please enter a job title to search.');
+        return;
+      }
+
+      fetch('/search/searchJob', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ JobTitle: jobTitle }), 
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const jobList = document.querySelector('.job-list ul') || createJobListContainer();
+        jobList.innerHTML = ''; // Clear previous results
+
+        if (data.length === 0) {
+          jobList.innerHTML = '<p>No jobs found matching your search.</p>';
+          return;
+        }
+
+        data.forEach(job => {
+          const jobItem = document.createElement('li');
+          jobItem.style = "background-color: #f9f9f9; padding: 10px; margin-bottom: 10px; border-radius: 4px;";
+          
+          jobItem.innerHTML = `
+            <p style="font-size: 18px; color: #333; margin: 10px 0;">
+              ${job.JobTitle} <br>
+              Company Name: ${job.CompanyName} <br>
+              Estimated Salary: ${job.EstimatedSalary} <br>
+              Location: ${job.Location} <br>
+              Required Skills: ${job.RequiredSkillSet} <br>
+              Deadline: ${new Date(job.Deadline).toISOString().split('T')[0]} <br>
+              Date: ${new Date(job.Date).toISOString().split('T')[0]} <br>
+              ${job.Description} <br>
+              <a href="/students/${job._id}/apply" style="text-decoration: none;">
+                <button type="button" style="background-color: #5F9EA0; color: #F0F8FF; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;">Apply</button>
+              </a>
+            </p>
+          `;
+          
+          jobList.appendChild(jobItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while searching for jobs. Please try again later.');
+      });
+    }
+
+    // Helper function to create a job list container if it doesn't exist
+    function createJobListContainer() {
+      const container = document.querySelector('.job-list');
+      const jobList = document.createElement('ul');
+      jobList.style = "list-style-type: none; padding: 0; margin: 0;";
+      container.appendChild(jobList);
+      return jobList;
+    } -->

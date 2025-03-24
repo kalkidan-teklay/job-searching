@@ -1,0 +1,147 @@
+
+body, h1, h2, p, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: none;
+}
+
+.logo {
+    color: black;
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.icon{
+    width:30px;
+    height: 28px;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.main-image{
+    height:300px !important;
+}
+
+.button {
+    margin-right: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.yellow {
+    background-color: #5F9EA0;
+}
+
+.blue {
+    background-color: #e4e6ea;
+    color: black;
+}
+
+.green {
+    background-color: #5F9EA0;
+}
+
+.icon-button {
+    margin-right: 10px;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.main-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.intro-section img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    position: absolute;
+    height: 45px;
+    width: 35%;
+    top: 265px; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #d3d4d8;
+}
+
+.search-button {
+    padding: 10px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    background-color: #5F9EA0;
+    color: white;
+}
+
+.job-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.category img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.category-button {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e4e6ea;
+    color: black;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #e4e6ea;
+    color: black;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.right-column {
+    align-items: flex-end;
+}
+
